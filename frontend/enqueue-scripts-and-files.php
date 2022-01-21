@@ -20,7 +20,9 @@ function rb_enqueue_scripts()
         true
     );
 
-
+    wp_localize_script('rb_main', 'tasks_object', [
+        'ajax_url'      =>  admin_url('admin-ajax.php')
+    ]);
 
     wp_enqueue_script('rb_tasks');
     wp_enqueue_script('rb_main');
