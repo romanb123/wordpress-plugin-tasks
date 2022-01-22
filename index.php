@@ -28,5 +28,6 @@ add_action('init', 'Task_init');
 add_filter('the_content', 'filter_tasks_type_content');
 add_action('wp_enqueue_scripts', 'rb_enqueue_scripts', 100);
 add_action('wp_ajax_set_task_priority', 'set_task_priority');
+add_action('wp_ajax_set_task_priority', 'set_task_priority');
 
 // shortcodes
