@@ -21,15 +21,15 @@ function filter_tasks_type_content($content)
     );
 
 
-    // if ($rating_priority > 0) {
+    if ($rating_priority > 0) {
         $task_html    =   str_replace(
             'READONLY_PLACEHOLDER',
             'data-rateit-readonly="true"',
             $task_html
         );
-    // } else {
-    //     $task_html    =   str_replace('READONLY_PLACEHOLDER', '', $task_html);
-    // }
+    } else {
+        $task_html    =   str_replace('READONLY_PLACEHOLDER', '', $task_html);
+    }
 
 
     return $task_html . $content;
