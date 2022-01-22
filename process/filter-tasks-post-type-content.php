@@ -17,20 +17,19 @@ function filter_tasks_type_content($content)
     $user_IP            =   $_SERVER['REMOTE_ADDR'];
 
     $rating_priority       =   $wpdb->get_var(
-        "SELECT COUNT(*) FROM `" . $wpdb->prefix . "tasks`
-        WHERE task_id='" . $post->ID . "' AND user_ip='" . $user_IP . "'"
+        "SELECT COUNT(*) FROM `" . $wpdb->prefix . "tasks` WHERE task_id='" . $post->ID . "' AND user_ip='" . $user_IP . "'"
     );
 
 
-    if ($rating_priority > 0) {
+    // if ($rating_priority > 0) {
         $task_html    =   str_replace(
             'READONLY_PLACEHOLDER',
             'data-rateit-readonly="true"',
             $task_html
         );
-    } else {
-        $task_html    =   str_replace('READONLY_PLACEHOLDER', '', $task_html);
-    }
+    // } else {
+    //     $task_html    =   str_replace('READONLY_PLACEHOLDER', '', $task_html);
+    // }
 
 
     return $task_html . $content;

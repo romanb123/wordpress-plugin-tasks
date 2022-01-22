@@ -6,7 +6,7 @@ function set_task_priority()
 
     $output             =   ['status' => 1];
     $post_ID            =   absint($_POST['rid']);
-    $priority             =   round($_POST['priority'], 1);
+    $priority             =   round($_POST['rating'], 1);
     $user_IP            =   $_SERVER['REMOTE_ADDR'];
 
     $priority_count       =   $wpdb->get_var(
@@ -30,14 +30,14 @@ function set_task_priority()
     );
 
     // Update Recipe Metadata
-    $post_date        =   get_post_meta($post_ID, 'post_date', true);
+    $post_date        =   get_post_meta($post_ID, 'Task_info', true);
     $post_date['priority_count']++;
     $post_date['priority']  =   round($wpdb->get_var(
         "SELECT AVG(`priority`) FROM `" . $wpdb->prefix . "tasks`
         WHERE task_id='" . $post_ID . "'"
     ), 1);
 
-    update_post_meta($post_ID, 'post_date', $post_date);
+    update_post_meta($post_ID, 'Task_info', $post_date);
 
     $output['status']   =   2;
     wp_send_json($output);

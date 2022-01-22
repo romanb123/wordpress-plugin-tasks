@@ -16,9 +16,9 @@ define('Tasks_PLUGIN_URI', __FILE__);
 include('includes/activation.php');
 include('includes/tasks_post_type.php');
 include('process/save-task-post-data.php');
-include('process/set-task-priority.php');
 include('process/filter-tasks-post-type-content.php');
 include('frontend/enqueue-scripts-and-files.php');
+include('process/set-task-priority.php');
 
 
 // hooks
@@ -28,6 +28,6 @@ add_action('init', 'Task_init');
 add_filter('the_content', 'filter_tasks_type_content');
 add_action('wp_enqueue_scripts', 'rb_enqueue_scripts', 100);
 add_action('wp_ajax_set_task_priority', 'set_task_priority');
-add_action('wp_ajax_set_task_priority', 'set_task_priority');
+add_action('wp_ajax_nopriv_set_task_priority', 'set_task_priority');
 
 // shortcodes
